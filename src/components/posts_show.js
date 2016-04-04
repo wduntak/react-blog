@@ -9,10 +9,14 @@ class PostsShow extends Component {
 	};
 
 	onDelete() {
-		this.props.deletePost(this.props.params.id)
-			.then(() => { 
-				this.context.router.push('/');
-			})
+		if(confirm("Are you sure you want to delete this post?")){
+			this.props.deletePost(this.props.params.id)
+				.then(() => { 
+					this.context.router.push('/');
+				})
+		} else {
+			// Do nothing
+		}
 	};
 
 	componentWillMount() {
